@@ -6,7 +6,5 @@ const heading = React.createElement('h1', { id: 'heading' }, 'heading')
 
 // create element using JSX
 const jsxHeading = <h1 id="heading">heading with jsx</h1>
-console.log(heading);
-console.log(jsxHeading);
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(jsxHeading)
