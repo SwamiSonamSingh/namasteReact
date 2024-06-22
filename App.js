@@ -1,8 +1,12 @@
-const heading = React.createElement('h1', { id: 'parent' },
-    [React.createElement('div', { id: 'child1' },
-        [React.createElement('h1', { id: 'heading1' }, 'This is hierarchy heading 1'), React.createElement('h1', { id: 'heading2' }, 'This is hierarchy heading 2')]),
-    React.createElement('div', { id: 'child2' },
-        [React.createElement('h1', { id: 'heading1' }, 'This is hierarchy heading 1'), React.createElement('h1', { id: 'heading2' }, 'This is hierarchy heading 2')])]
-)
+import React from "react"
+import ReactDOM from 'react-dom'
+
+// create element using core react
+const heading = React.createElement('h1', { id: 'heading' }, 'heading')
+
+// create element using JSX
+const jsxHeading = <h1 id="heading">heading with jsx</h1>
+console.log(heading);
+console.log(jsxHeading);
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(heading)
+root.render(jsxHeading)

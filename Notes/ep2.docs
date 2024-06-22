@@ -1,0 +1,5 @@
+* The baisc difference is ^ contains the minor version and ~ contains the major verision
+* package.json contains the approx verion of package but package-lock.json contains the exact logs of any package
+* Transitive dependency - when a package is dependent on other package dependency then this phenomena is known as Transitive dependency
+* npx - used to execute the package, npm - installing the package
+* HMR - hot module replacement
