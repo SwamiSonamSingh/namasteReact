@@ -1,1 +1,60 @@
 * JSX -  jsx is HTML like syntax and also we can write our react code without JSX so both JSX and react are different thing
+* Behind the scene JSX is by the end it is a cre react code and babel is converting our code from JSX to react code
+    
+    eg:-
+        const jsxElement = <h1 id='heading'>This is a heading</h1>
+        
+        so with the help of babel this code is converted in out React code meaning by the end we got 
+        
+        const jsxElement = React.createElement('h1', {id:'heading'}, 'This is a heading')
+        
+* A React component is javascript function that will return some JSX
+
+    eg:-
+    
+        const Component = () => {
+            return <h1>Heading</h1>; // JSX code
+        }
+        
+        * When we wrote multiline JSX code then it should bw binded together with ()
+        
+        eg:-
+        
+        const Component = () => {
+            return (
+                <div>
+                    <div>hello</div>
+                </div>  
+            );
+        }
+     
+* Putting one component in another component is known as compoenent composition
+
+        eg:-
+        
+        const Title = () => {
+            return <h1>This is a title</h1>;
+        }
+        
+        // compoenent composition
+        const Component = () => {
+            return (
+                <div>
+                    <Title/> or {Title()} or <Title></Title>  // these convensations are same 
+                    <h1>This is a heading</h1>
+                </div>
+            );
+        }
+        
+        another example 
+        
+        const title = <h1>This is a title</h1> // JSX element
+        
+        const Component=()=>{
+            return (
+                <div>
+                    {title}
+                    <h1>This is a heading</h1>
+                </div>
+            );
+        }
