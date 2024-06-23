@@ -10,13 +10,8 @@ const ratingIcon = <svg width="20" height="20" viewBox="0 0 20 20" fill="none" r
 const RestaurantsCard = (props) => {
     const { name, cloudinaryImageId, areaName, avgRating, sla, cuisines, aggregatedDiscountInfoV3,setCartValue,cartValue } = props
     const bannerImageLink = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`
-    const handleCardClick = (cardInfo) => {
-        setCartValue(cartValue+1)
-    }
     return (
-        <div className='restaurant-card'
-            onClick={(event)=>handleCardClick({event, value:props})}
-        >
+        <div className='restaurant-card'>
             <div className='restaurant-card__banner'>
                 <img className='restaurant-card__banner__image' src={bannerImageLink} />
                 <div className='restaurant-card__banner__imageTitle'>{`${get(aggregatedDiscountInfoV3, 'header')} ${get(aggregatedDiscountInfoV3, 'subHeader', '')}`}</div>
