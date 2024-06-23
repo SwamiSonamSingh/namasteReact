@@ -1,0 +1,23 @@
+* There are two types of export and import 
+    
+    1. Named export
+        eg:- export const variable =20
+    2. default export 
+        eg:- const variable=20
+            export default variable
+We use named export when we have to export multiple things
+
+    1. When we use named export the the import should like import {variable} from './'
+    2. When we are using default import then we simply write import variable from './'
+    
+* Hooks are the utility which allow us to modify our varibale 
+
+    const [var, setVar]=useState('')
+    
+    when ever a state variable updated react will reRender our component
+    
+* Reconciliation Algorithm(React Fiber):-
+    
+    Virtual DOM is a representation on actual DOM and the virtual dom is nothing just a react create element.
+    
+* Diff Algorithm:- Diff algorith basically try to find the difference between old and new virtual DOM on every updation

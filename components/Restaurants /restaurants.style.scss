@@ -1,12 +1,28 @@
-.restaurant-component{
+.restaurant-component {
     padding: 50px 200px 0px 200px;
-    &__title{
+    &__title {
         font-family: "Nunito", sans-serif;
         font-weight: bolder;
         font-size: 30px;
         padding-bottom: 20px;
     }
-    &__cards{
+    &__button {
+        padding: 8px 10px;
+        background-color: #12a1a1;
+        color: white;
+        font-family: "Nunito", sans-serif;
+        line-height: 1.5;
+        border: 1px solid #12a1a1;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        &:hover {
+            background-color: #066;
+            transition: 0.5s ease-out;
+            cursor: pointer;
+        }
+    }
+    &__cards {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
