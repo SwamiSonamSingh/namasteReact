@@ -1,0 +1,15 @@
+.restaurant-component{
+    padding: 50px 200px 0px 200px;
+    &__title{
+        font-family: "Nunito", sans-serif;
+        font-weight: bolder;
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+    &__cards{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2px;
+    }
+}
