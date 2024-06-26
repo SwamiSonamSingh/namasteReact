@@ -52,4 +52,16 @@
             font-weight: bold;
         }
     }
+    &__button{
+        border : 1px solid #12a1a1;
+        background-color: #12a1a1;
+        padding: 8px 20px;
+        color: white;
+        border-radius: 5px;
+        &:hover{
+            cursor: pointer;
+            background-color: #066;
+            transition: 0.5s ease-out;
+        }
+    }
 }
