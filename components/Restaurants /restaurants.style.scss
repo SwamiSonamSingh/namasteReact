@@ -1,10 +1,31 @@
 .restaurant-component {
     padding: 50px 200px 0px 200px;
+    &__noData{
+        display: flex;
+        justify-content: center;
+        img{
+            height: 400px;
+            width: 60%;   
+        }
+    }
+    &__input{
+        width: 100%;
+        height: 40px;
+        font-family: "Nunito", sans-serif;
+        font-size: 15px;
+        border-radius: 5px;
+        text-indent: 5px;
+        border: 1.5px solid #bababa;
+        &:focus{
+            border: none;
+            outline: 1.7px solid black;
+        }
+    }
     &__title {
         font-family: "Nunito", sans-serif;
         font-weight: bolder;
         font-size: 30px;
-        padding-bottom: 20px;
+        padding: 20px 0px;
     }
     &__button {
         padding: 8px 10px;
@@ -24,8 +45,7 @@
     }
     &__cards {
         display: flex;
-        justify-content: space-between;
+        gap: 0px 138px;
         flex-wrap: wrap;
-        gap: 2px;
     }
 }

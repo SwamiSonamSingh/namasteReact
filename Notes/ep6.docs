@@ -1,0 +1,2 @@
+* useEffect is a function that are provided by React and it will loaded after the component is rendered
+* when ever state varibale updates our whole component will be re-rendered this is also know as reconciliation cycle.
