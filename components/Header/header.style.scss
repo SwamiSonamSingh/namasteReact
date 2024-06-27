@@ -1,15 +1,15 @@
-.header{
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-family: "Nunito", sans-serif;
-    border-bottom: 1px solid #BABABA;
-    &__logo{
+    border-bottom: 1px solid #bababa;
+    &__logo {
         height: 55px;
         width: 55px;
         cursor: pointer;
     }
-    &__nav{
+    &__nav {
         display: flex;
         justify-content: space-between;
         width: 33%;
@@ -17,10 +17,21 @@
         padding: 0px;
         font-size: 20px;
         font-weight: bold;
-        color: #BABABA;
-        &__items{
+        color: #bababa;
+        &__items {
             list-style: none;
-            &:hover{
+            &--selected {
+                list-style: none;
+                a {
+                    color: black;
+                    text-decoration: underline;
+                }
+            }
+            a {
+                text-decoration: none;
+                color: unset;
+            }
+            &:hover {
                 cursor: pointer;
                 color: black;
                 opacity: 0.6;
@@ -28,12 +39,12 @@
             }
         }
     }
-    &__cart{
+    &__cart {
         display: flex;
         justify-content: flex-end;
         padding: 0px 20px;
         cursor: pointer;
-        &__count{
+        &__count {
             height: 15px;
             width: 15px;
             display: flex;
@@ -45,20 +56,20 @@
             padding: 5px;
             color: white;
         }
-        &__title{
+        &__title {
             padding: 0px 7px;
-            color: #BABABA;
+            color: #bababa;
             font-size: 20px;
             font-weight: bold;
         }
     }
-    &__button{
-        border : 1px solid #12a1a1;
+    &__button {
+        border: 1px solid #12a1a1;
         background-color: #12a1a1;
         padding: 8px 20px;
         color: white;
         border-radius: 5px;
-        &:hover{
+        &:hover {
             cursor: pointer;
             background-color: #066;
             transition: 0.5s ease-out;

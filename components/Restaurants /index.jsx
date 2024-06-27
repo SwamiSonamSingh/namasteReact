@@ -4,6 +4,7 @@ import { cloneDeep, get, includes, isEmpty } from 'lodash'
 import './restaurants.style.scss'
 import RestaurantsCardPreloader from './RestaurantsCardPreloader'
 import noData from './noData.png'
+import { Link } from 'react-router-dom'
 
 const Restaurants = (props) => {
     const { setCartValue, cartValue } = props
@@ -63,15 +64,16 @@ const Restaurants = (props) => {
                 Reset
             </button>
             {isEmpty(filteredList) ? <div className='restaurant-component__noData'><img src={noData} /></div> : <div className='restaurant-component__cards'>
-                {filteredList.map((_products, index) => {
+                {filteredList.map((_products ) => {
                     const productDetails = get(_products, 'info', {})
                     return (
-                        <RestaurantsCard
-                            {...productDetails}
-                            key={`${index}-${get(productDetails, 'id', '')}`}
-                            setCartValue={setCartValue}
-                            cartValue={cartValue}
-                        />
+                        <Link to={`/restaurants/${get(productDetails, 'id', '')}`} key={get(productDetails, 'id', '')}>
+                            <RestaurantsCard
+                                {...productDetails}
+                                setCartValue={setCartValue}
+                                cartValue={cartValue}
+                            />
+                        </Link>
                     )
                 })}
             </div>}

@@ -1,6 +1,12 @@
 import React from "react"
 import ReactDOM from 'react-dom'
 import App from "."
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import About from "./components/About"
+import ContactUs from "./components/ContactUs"
+import Error from "./components/Error"
+import Restaurants from "./components/Restaurants "
+import RestaurantMenu from "./components/RestaurantMenu"
 
 // create element using core react
 // const heading = React.createElement('h1', { id: 'heading' }, 'heading')
@@ -21,5 +27,34 @@ import App from "."
 //     )
 // }
 
+
+export const routes = createBrowserRouter([
+    {
+        path: '/',
+        element: <App />,
+        errorElement: <Error />,
+        children: [
+            {
+                path: '/',
+                element: <Restaurants />
+            },
+            {
+                path: '/about',
+                element: <About />,
+                errorElement: <Error />
+            },
+            {
+                path: '/contactUs',
+                element: <ContactUs />,
+                errorElement: <Error />
+            },
+            {
+                path: '/restaurants/:resId',
+                element: <RestaurantMenu />,
+                errorElement: <Error />
+            }
+        ]
+    }
+])
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<App/>)
+root.render(<RouterProvider router={routes} />)

@@ -1,0 +1,186 @@
+.restaurants-menu {
+    padding: 50px 200px 0px 200px;
+    font-family: "Nunito", sans-serif;
+    &__error{
+        font-size: 30px;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__sectionSeparator {
+        margin: 15px 0px;
+        height: 15px;
+        width: 100%;
+        background-color: #dbdbdb;
+        border-radius: 5px;
+    }
+    &__details {
+        &__name {
+            font-size: 30px;
+            font-weight: bolder;
+            font-family: "Oswald", sans-serif;
+            margin-bottom: 30px;
+        }
+        &__additionalInfo {
+            font-size: 17px;
+            font-weight: bolder;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+            padding: 30px 40px;
+            background: linear-gradient(
+                rgb(255, 255, 255) -6.71%,
+                rgb(235, 235, 242) 56.19%,
+                rgb(223, 223, 231) 106.56%
+            );
+            &__heading {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                &__separator {
+                    border-radius: 50%;
+                    height: 7px;
+                    width: 7px;
+                    background-color: black;
+                }
+                &__ratingIcon {
+                    height: 22px;
+                }
+            }
+            &__areaName,
+            &__estimatedDelivery {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                border-left: 1px solid rgb(196, 196, 196);
+                padding-bottom: 15px;
+                height: 8px;
+                margin-left: 5px;
+                &:last-child {
+                    padding-bottom: 0px;
+                }
+                &__separator {
+                    margin-left: -4.5px;
+                    height: 8px;
+                    width: 8px;
+                    background-color: rgb(196, 196, 196);
+                    border-radius: 50%;
+                }
+            }
+            &__areaName {
+                margin-top: 10px;
+                &__subTitle {
+                    color: rgba(2, 6, 12, 0.6);
+                    font-weight: normal;
+                }
+            }
+            &__cuisines {
+                color: rgb(241, 87, 0);
+                text-decoration: underline;
+            }
+        }
+    }
+    &__listItems {
+        &__items {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #dbdbdb;
+            margin-top: 25px;
+            &:last-child {
+                border-bottom: none;
+            }
+            &__left {
+                flex-direction: column;
+                display: flex;
+                gap: 5px;
+                &__name {
+                    font-weight: 900;
+                }
+                &__description {
+                    width: 70%;
+                }
+                &__indicator {
+                    &--veg {
+                        &--outer {
+                            border: 1px solid rgb(27, 166, 114);
+                            padding: 5px;
+                            width: fit-content;
+                            border-radius: 6px;
+                            &__inner {
+                                border-radius: 50%;
+                                height: 10px;
+                                width: 10px;
+                                background-color: rgb(27, 166, 114);
+                            }
+                        }
+                    }
+                    &--nonVeg {
+                        opacity: 0.7;
+                        &--outer {
+                            padding: 5px;
+                            width: fit-content;
+                            border-radius: 6px;
+                            border: 1px solid red;
+                            &__inner {
+                                border-radius: 50%;
+                                height: 10px;
+                                width: 10px;
+                                background-color: red;
+                            }
+                        }
+                    }
+                }
+                &__priceSection {
+                    display: flex;
+                    gap: 5px;
+                    &__price {
+                        font-size: 13px;
+                        font-weight: bold;
+                    }
+                    &__icon {
+                        height: 14px;
+                    }
+                    &__offer {
+                        font-size: 13px;
+                        font-weight: bolder;
+                        font-family: "Oswald", sans-serif;
+                    }
+                }
+                &__ratingSection {
+                    display: flex;
+                    gap: 5px;
+                    &__rating {
+                        color: rgb(27, 166, 114);
+                    }
+                }
+            }
+            &__right {
+                &__banner {
+                    img {
+                        height: 144px;
+                        width: 156px;
+                        object-fit: cover;
+                        border-radius: 12px;
+                    }
+                }
+                &__action {
+                    position: relative;
+                    bottom: 25px;
+                    left: 17%;
+                    background-color: white;
+                    border: 1px solid #dbdbdb;
+                    padding: 5px 30px;
+                    border-radius: 5px;
+                    color: rgb(27, 166, 114);
+                    font-weight: 900;
+                    font-size: 20px;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: #dbdbdb;
+                        transition: 1s ease-out;
+                    }
+                }
+            }
+        }
+    }
+}
