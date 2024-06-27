@@ -1,0 +1,22 @@
+*  useEffect cases:-
+    
+        1. when the dependency array is not present in useEffect then our useEffect will render every time
+           when our component render
+            eg:-
+                useEffect(()=>{
+                    
+                })
+           
+        2. when we give dependency array the it only rendered once when our component load initially
+            eg:-
+                useEffect(()=>{
+                    
+                },[])
+        3. when we pass any value to dependency array the it only render when it makes any changes in
+           the given dependency
+            eg:-
+                useEffect(()=>{
+                    
+                }, [value])
+                
+* Always place useState insilde the functioncal comopoent not in another place
