@@ -40,8 +40,10 @@ const Header = (props) => {
                 })}
             </ul>
             <div className='header__cart'>
-                <span className='header__cart__count'>{cartValue}</span>
-                <span className='header__cart__title'>Cart</span>
+                <Link to={'/cart'}>
+                    <span className='header__cart__count'>{cartValue}</span>
+                    <span className='header__cart__title'>Cart</span>
+                </Link>
             </div>
             <button className='header__button'
                 onClick={() => handleButtonClick(label)}

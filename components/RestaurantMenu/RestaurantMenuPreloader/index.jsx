@@ -18,7 +18,7 @@ const RestaurantMenuPreloader = () => {
             </div>
             {map([...Array(10).keys()], (index) => {
                 return (
-                    <div className='restaurant-menu-preloader__body'>
+                    <div className='restaurant-menu-preloader__body' key={index}>
                         <div className='restaurant-menu-preloader__body__left'>
                             {map([...Array(6).keys()], (items) => {
                                 return (

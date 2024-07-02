@@ -1,7 +1,25 @@
 .restaurants-menu {
     padding: 50px 200px 0px 200px;
     font-family: "Nunito", sans-serif;
-    &__error{
+    a{
+        text-decoration: none;
+    }
+    &__back {
+        border-radius: 50%;
+        background-color: #12A1A1;
+        width: fit-content;
+        color: white;
+        margin-bottom: 30px;
+        padding: 3px 15px;
+        font-size: 30px;
+        font-weight: 900;
+        &:hover{
+            cursor: pointer;
+            background-color: #066;
+            transition: 1s ease-out;
+        }
+    }
+    &__error {
         font-size: 30px;
         font-weight: 900;
         display: flex;
@@ -98,6 +116,12 @@
                 }
                 &__description {
                     width: 70%;
+                    &__showMore{
+                        font-weight: 700;
+                        cursor: pointer;
+                        opacity: 0.4;
+                        letter-spacing: 1.5px;
+                    }
                 }
                 &__indicator {
                     &--veg {
@@ -164,20 +188,43 @@
                     }
                 }
                 &__action {
+                    height: 34px;
+                    width: 92px;
                     position: relative;
                     bottom: 25px;
                     left: 17%;
                     background-color: white;
                     border: 1px solid #dbdbdb;
-                    padding: 5px 30px;
+                    padding: 0px;
                     border-radius: 5px;
                     color: rgb(27, 166, 114);
                     font-weight: 900;
                     font-size: 20px;
-                    &:hover {
-                        cursor: pointer;
-                        background-color: #dbdbdb;
-                        transition: 1s ease-out;
+                    &__text {
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                    &__count {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        &__minus,
+                        &__plus {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 4px 0px 0px 4px;
+                            width: 30px;
+                            height: 33px;
+                            background-color: #dbdbdb;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                        &__plus {
+                            border-radius: 0px 4px 4px 0px;
+                        }
                     }
                 }
             }

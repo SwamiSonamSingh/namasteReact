@@ -1,0 +1,128 @@
+* difference between functional and class based component
+
+    functionl component is a javascript function which returns some piece of JSX
+        
+        eg:-
+        
+            const About =()=>{
+                return(
+                    <div>About page</div>   
+                )
+            }
+    
+    class component is javascript class that contains render methof and it returns some piece of JSX
+    
+        eg:-
+        
+            import React from 'react'
+            class About extends React.Component{
+                render(){
+                    return(
+                        <div>About page</div>   
+                    )
+                }
+            }
+            
+            or
+            
+            import {Component} from 'react'
+            class About extends Component{
+                render(){
+                    return(
+                        <div>About page</div>   
+                    )
+                }
+            }
+
+* In our react class component firstly constructor is called secondly render is called and then componentDidMount called
+
+    eg:-
+    
+    class About extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: 0
+        }
+        console.log('constructor called');
+    }
+    componentDidMount() {
+        console.log('component did mount called');
+    }
+    render() { 
+        console.log('render called');
+        const { name } = this.props
+        const {count }=this.state
+        const handleClick = () => {
+            this.setState({
+                count:count+1
+            })
+        }
+        return (
+            <div>
+                <div>{`Hi you are in ${name} page`}</div>
+                <div>{count}</div> 
+                <button onClick={()=>handleClick()}>Add</button>
+            </div>
+        )
+    }
+}
+
+ now if we have another component called inside the component and they also contains same thing and let 
+ say the name of the component is child component. eg:-
+ 
+    class Parent extends React.Component (){
+        constructor(){
+            super()
+            console.log('parent constructor')
+        }
+        
+        componentDidMount(){
+            console.log('Parent component did mount')
+        }
+        
+        render(){
+            console.log('Parent render')
+            return (
+                <div>
+                    <Child/>
+                </div>
+            )
+        }
+    }
+    
+    class Child extends React.Component (){
+        constructor(){
+            super()
+            console.log('child constructor')
+        }
+        
+        componentDidMount(){
+            console.log('child component did mount')
+        }
+        
+        render(){
+            console.log('child render')
+            return (
+                <div>
+                    hello
+                </div>
+            )
+        }
+    }
+    
+    execution order
+    
+        1. parent constructor
+        2. Parent render
+        3. child constructor
+        4. child render
+        5. child component did mount
+        6. Parent component did mount
+        
+    componentDidMount is used to make api call because it called after DOM get loaded and this is same as useEffect
+
+ 
+    
+    
+            
