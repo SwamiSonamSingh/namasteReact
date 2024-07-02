@@ -40,10 +40,14 @@
         }
     }
     &__cart {
-        display: flex;
-        justify-content: flex-end;
-        padding: 0px 20px;
         cursor: pointer;
+        a {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0px 20px;
+            text-decoration: none;
+            color: none;
+        }
         &__count {
             height: 15px;
             width: 15px;
