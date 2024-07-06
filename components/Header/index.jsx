@@ -20,6 +20,11 @@ const Header = (props) => {
             link: '/contactUs',
             name: 'contactUs',
             value: 'Contact Us'
+        },
+        {
+            link: '/grocery',
+            name: 'grocery',
+            value: 'Grocery'
         }
     ]
     const { cartValue } = props
