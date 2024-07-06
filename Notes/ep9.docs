@@ -1,0 +1,15 @@
+* Chucking our application
+
+    if we are Grocery component and we want to seperate chunck the just use lazy and the imoprt is as follows
+    
+        eg:-
+            const Grocery = lazy(()=>import('./components/Grocery'))
+        
+        also when we use lazy then where we mounting our component ther ewe use Suspense
+        
+            eg:-
+                <Suspense fallback={<h1>Loading Component ....</h1>}><Grocery/></Suspense>,
+                
+                in fallback we can put any tags are shimmer component
+                
+                we use suspense because react respose is very fast so we wrap in suspense for wait some time

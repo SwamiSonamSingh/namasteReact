@@ -1,14 +1,15 @@
 import React from 'react'
 import './about.style.scss'
+import CheckOnlineStatus from '../../utils/checkOnlineStatus';
 
 class About extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userInfo: {}
+            userInfo: {},
         }
         console.log('constructor called');
-    }
+    } 
     componentDidUpdate() {
         console.log('component updated');
     }
@@ -28,10 +29,12 @@ class About extends React.Component {
         console.log('render called');
         const { name, avatar_url, company } = this.state.userInfo
         return (
-            <div>
-                <img src={avatar_url} />
-                <div>{name}</div>
-                <div>{company}</div>
+            <div className='about-page'>
+                 <div className='about-page__content'>
+                <img src={avatar_url} className='about-page__content__image'/>
+                <div className='about-page__content__name'>{name}</div>
+                <div className='about-page__content__company'>{company}</div>
+            </div>
             </div>
         )
     }

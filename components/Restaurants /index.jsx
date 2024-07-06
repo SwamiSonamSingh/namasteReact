@@ -14,7 +14,7 @@ const Restaurants = (props) => {
     const [fetching, setFetching] = useState(false)
     const handleFilter = () => {
         const filteredData = (restaurantList.filter((res) => get(res, 'info.avgRating') > 4.5))
-        setRestaurantList(filteredData)
+        setFilteredList(filteredData)
     }
 
     const handleReset = () => {
