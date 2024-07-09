@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react"
+import React, { lazy, Suspense, useState } from "react"
 import ReactDOM from 'react-dom'
 import App from "."
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
@@ -28,14 +28,11 @@ import Cart from "./components/Cart"
 //     )
 // }
 
-const Grocery = lazy(()=>import('./components/Grocery'))
-
-
+const Grocery = lazy(() => import('./components/Grocery'))
 export const routes = createBrowserRouter([
     {
         path: '/',
-        element: <App />,
-        errorElement: <Error />,
+        element: <App/>,
         children: [
             {
                 path: '/',
@@ -55,7 +52,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/cart',
-                element: <Cart />,
+                element: <Cart/>,
             },
             {
                 path: '/grocery',

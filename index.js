@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import Header from './components/Header'
 import { Outlet } from 'react-router-dom'
+import { Provider, useSelector } from 'react-redux'
+import appStore from './utils/appStore'
 
 const App = () => {
-    const [cartValue, setCartValue] = useState(0)
     return (
-        <div className='wrapper'>
-            <Header
-                cartValue={cartValue}
-            />
+        <Provider store={appStore}>
+            <Header />
             <Outlet />
-        </div>
+        </Provider>
     )
 }
 

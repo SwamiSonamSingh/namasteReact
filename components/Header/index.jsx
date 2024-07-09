@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './header.style.scss'
 import logo from './applogo.png'
-import { find, get, isEqual, map } from 'lodash'
+import { find, get, map } from 'lodash'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-const Header = (props) => {
+const Header = () => {
     const tabItems = [
         {
             link: '/',
@@ -25,36 +26,36 @@ const Header = (props) => {
             link: '/grocery',
             name: 'grocery',
             value: 'Grocery'
+        },
+        {
+            link: '/cart',
+            name: 'cart',
+            value: 'Cart'
         }
     ]
-    const { cartValue } = props
-    const [label, setLabel] = useState('Login')
     const [tab, setTab] = useState('home')
-    const handleButtonClick = (label) => {
-        { isEqual(label, "Login") ? setLabel('Log Out') : setLabel('Login') }
-    }
+    const cartItems = useSelector((store) => store.cart.items)
     return (
         <div className='header'>
             <img className='header__logo' src={logo} />
             <ul className='header__nav'>
                 {map(tabItems, (_tabs, index) => {
-                    const tabClassName = get(find(tabItems, { name: tab }), 'name', '') === get(_tabs, 'name', '') ? 'header__nav__items--selected' : 'header__nav__items'
+                    const tabClassName = get(find(tabItems, { name: tab }), 'name', '') === get(_tabs, 'name', '') ? `header__nav__items--${_tabs.name}__selected` : `header__nav__items--${_tabs.name}`
+                    if (_tabs.name === 'cart') {
+                        return (
+                            <li className={tabClassName} onClick={() => setTab(get(_tabs, 'name', ''))}>
+                                <Link to={_tabs.link}>
+                                    <span className='header__cart__count'>{cartItems.length}</span>
+                                    <span className='header__cart__title'>Cart</span>
+                                </Link>
+                            </li>
+                        )
+                    }
                     return (
                         <li className={tabClassName} key={index} onClick={() => setTab(get(_tabs, 'name', ''))}><Link to={get(_tabs, 'link', '')}>{get(_tabs, 'value', '')}</Link></li>
                     )
                 })}
             </ul>
-            <div className='header__cart'>
-                <Link to={'/cart'}>
-                    <span className='header__cart__count'>{cartValue}</span>
-                    <span className='header__cart__title'>Cart</span>
-                </Link>
-            </div>
-            <button className='header__button'
-                onClick={() => handleButtonClick(label)}
-            >
-                {label}
-            </button>
         </div>
     )
 }
