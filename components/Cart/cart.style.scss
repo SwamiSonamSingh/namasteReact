@@ -1,0 +1,144 @@
+.cart-item {
+    padding: 50px 200px 0px 200px;
+    font-family: "Nunito", sans-serif;
+
+    &__heading {
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__text {
+            font-size: 30px;
+            font-weight: bolder;
+        }
+
+        &__button {
+            color: white;
+            background-color: #f15700;
+            padding: 10px 20px;
+            border: 2px solid #f15700;
+            border-radius: 5px;
+            font-size: 15px;
+            &:hover {
+                background-color: #f15700;
+                opacity: 1;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        &__noData {
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            &__image{
+                width: 271px;
+                height: 256px;
+            }
+            &__text {
+                font-size: 25px;
+                font-weight: bolder;
+            }
+        }
+        &__body {
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            padding: 0px 20px;
+            max-height: 70vh;
+            overflow-y: auto;
+            width: 50%;
+            &::-webkit-scrollbar {
+                display: none;
+                width: 0;
+            }
+
+            &__items {
+                padding: 10px 50px;
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid #dbdbdb;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &__left {
+                    font-size: 15px;
+                    font-weight: bold;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+
+                &__right {
+                    font-size: 15px;
+                    font-weight: bold;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    &__image {
+                        height: 144px;
+                        width: 156px;
+                        object-fit: cover;
+                        border-radius: 12px;
+                    }
+                }
+            }
+        }
+        &__bill {
+            width: 40%;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            padding: 20px 20px;
+            max-height: 50vh;
+            &__content {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid #dbdbdb;
+                margin-bottom: 10px;
+                padding: 10px 0px;
+                font-size: 15px;
+                font-weight: bold;
+                &:last-child {
+                    border-bottom: none;
+                }
+                &__price {
+                    width: 75px;
+                }
+            }
+            &__buttons {
+                display: flex;
+                // flex-direction: column;
+                justify-content: space-between;
+                &__back,
+                &__payment {
+                    font-family: "Nunito", sans-serif;
+                    padding: 15px 40px;
+                    font-size: 15px;
+                    font-weight: bold;
+                    color: white;
+                    border-radius: 4px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                &__back {
+                    background-color: #f15700;
+                    border: 1px solid #f15700;
+                }
+                &__payment {
+                    background-color: rgb(27, 166, 114);
+                    border: 1px solid rgb(27, 166, 114);
+                }
+            }
+        }
+    }
+}

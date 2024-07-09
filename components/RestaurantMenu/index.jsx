@@ -6,46 +6,75 @@ import RestaurantMenuPreloader from './RestaurantMenuPreloader'
 import { Link, useParams } from 'react-router-dom'
 import useRestaurantInfo from '../../utils/useRestaurantInfo'
 import CheckOnlineStatus from '../../utils/checkOnlineStatus'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../../utils/cartSlice'
 
 const RestaurantCardsView = (props) => {
-    const {info, indicatorClassName,index}=props
+    const { info, indicatorClassName, index,resId } = props
     const [length, setLength] = useState(100)
     const [count, setCount] = useState(0)
-    const [toggleMore, setToggleMore]=useState(true)
+    const [toggleMore, setToggleMore] = useState(true)
+    const dispatchItem = useDispatch()
+    const handleAddItem = (payload) => {
+        dispatchItem(addItem(payload))
+    }
     return (
         <div className='restaurants-menu__listItems__items' key={index}>
-        <div className='restaurants-menu__listItems__items__left'>
-            <div className={indicatorClassName}>
-                <div className={`${indicatorClassName}--outer`}>
-                    <div className={`${indicatorClassName}--outer__inner`}></div>
+            <div className='restaurants-menu__listItems__items__left'>
+                <div className={indicatorClassName}>
+                    <div className={`${indicatorClassName}--outer`}>
+                        <div className={`${indicatorClassName}--outer__inner`}></div>
+                    </div>
                 </div>
-            </div>
-            <div className='restaurants-menu__listItems__items__left__name'>{get(info, 'name', '')}</div>
-            <div className='restaurants-menu__listItems__items__left__priceSection'>
-                <span className='restaurants-menu__listItems__items__left__priceSection__price'>{!get(info, 'defaultPrice') ? `₹ ${get(info, 'price', 0) / 100}.00` : `₹ ${get(info, 'defaultPrice', 0) / 100}.00`}</span>
-                <span className='restaurants-menu__listItems__items__left__priceSection__icon'>{offIcon}</span>
-                <span className='restaurants-menu__listItems__items__left__priceSection__offer'>40% OFF USE TRYNEW</span>
-            </div>
-            {!isEmpty(get(info, 'ratings.aggregatedRating')) && <div className='restaurants-menu__listItems__items__left__ratingSection'>
-                <span className='restaurants-menu__listItems__items__left__ratingSection__icon'>{starIcon}</span>
-                <span className='restaurants-menu__listItems__items__left__ratingSection__rating'>{get(info, 'ratings.aggregatedRating.rating', '')}</span>
-                <span className='restaurants-menu__listItems__items__left__ratingSection__count'>{`(${get(info, 'ratings.aggregatedRating.ratingCountV2', '')})`}</span>
-            </div>}
+                <div className='restaurants-menu__listItems__items__left__name'>{get(info, 'name', '')}</div>
+                <div className='restaurants-menu__listItems__items__left__priceSection'>
+                    <span className='restaurants-menu__listItems__items__left__priceSection__price'>{!get(info, 'defaultPrice') ? `₹ ${get(info, 'price', 0) / 100}.00` : `₹ ${get(info, 'defaultPrice', 0) / 100}.00`}</span>
+                    <span className='restaurants-menu__listItems__items__left__priceSection__icon'>{offIcon}</span>
+                    <span className='restaurants-menu__listItems__items__left__priceSection__offer'>40% OFF USE TRYNEW</span>
+                </div>
+                {!isEmpty(get(info, 'ratings.aggregatedRating')) && <div className='restaurants-menu__listItems__items__left__ratingSection'>
+                    <span className='restaurants-menu__listItems__items__left__ratingSection__icon'>{starIcon}</span>
+                    <span className='restaurants-menu__listItems__items__left__ratingSection__rating'>{get(info, 'ratings.aggregatedRating.rating', '')}</span>
+                    <span className='restaurants-menu__listItems__items__left__ratingSection__count'>{`(${get(info, 'ratings.aggregatedRating.ratingCountV2', '')})`}</span>
+                </div>}
                 <div className='restaurants-menu__listItems__items__left__description'>{get(info, 'description', '').slice(0, length)} {toggleMore && <span onClick={() => { setLength(get(info, 'description', '').length), setToggleMore(false) }} className='restaurants-menu__listItems__items__left__description__showMore'>...more</span>}</div>
+            </div>
+            <div className='restaurants-menu__listItems__items__right'>
+                <div className='restaurants-menu__listItems__items__right__banner'><img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${get(info, 'imageId', '')}`} /></div>
+                <button className='restaurants-menu__listItems__items__right__action'>{isEqual(count, 0) ?
+                    <span
+                        className='restaurants-menu__listItems__items__right__action__text'
+                        onClick={() => {
+                            setCount((prev) => prev + 1),
+                                handleAddItem({ name: get(info, 'name', ''), image: `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${get(info, 'imageId', '')}`, price: !get(info, 'defaultPrice')? `${get(info, 'price', 0) / 100}.00` : `₹ ${get(info, 'defaultPrice', 0) / 100}.00`, quantityL:count+1, index:index, resId:resId })
+                        }}
+                    >
+                        ADD
+                    </span> :
+                    <div className='restaurants-menu__listItems__items__right__action__count'>
+                        <div
+                            className='restaurants-menu__listItems__items__right__action__count__minus'
+                            onClick={() => setCount((prev) => prev - 1)}
+                        >-</div>
+                        <div className='restaurants-menu__listItems__items__right__action__count__value'>{count}</div>
+                        <div
+                            className='restaurants-menu__listItems__items__right__action__count__plus'
+                            onClick={() => {
+                                setCount((prev) => prev + 1),
+                                handleAddItem({ name: get(info, 'name', ''), image: `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${get(info, 'imageId', '')}`, price: !get(info, 'defaultPrice')? `${get(info, 'price', 0) / 100}.00` : `₹ ${get(info, 'defaultPrice', 0) / 100}.00`, quantity:count+1, index:index, resId:resId })
+                            }}
+                        >+</div>
+                    </div>}</button>
+            </div>
         </div>
-        <div className='restaurants-menu__listItems__items__right'>
-            <div className='restaurants-menu__listItems__items__right__banner'><img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${get(info, 'imageId', '')}`} /></div>
-            <button className='restaurants-menu__listItems__items__right__action'>{isEqual(count, 0) ? <span className='restaurants-menu__listItems__items__right__action__text' onClick={() => setCount((prev)=> prev + 1)}>ADD</span> : <div className='restaurants-menu__listItems__items__right__action__count'><div className='restaurants-menu__listItems__items__right__action__count__minus' onClick={() => setCount((prev)=> prev - 1)}>-</div><div className='restaurants-menu__listItems__items__right__action__count__value'>{count}</div><div className='restaurants-menu__listItems__items__right__action__count__plus' onClick={() => setCount((prev)=> prev + 1)}>+</div></div>}</button>
-        </div>
-    </div>
     )
 }
 
 const RestaurantMenu = () => {
     const { resId } = useParams()
-    
+
     const restaurants = useRestaurantInfo(resId)
-    const onlineStatus=CheckOnlineStatus()
+    const onlineStatus = CheckOnlineStatus()
     const restaurantDetails = get(restaurants[2], 'card.card.info', {})
     const items = get(restaurants[4], 'groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards', [])
     if (!onlineStatus) {
@@ -88,6 +117,7 @@ const RestaurantMenu = () => {
                             info={info}
                             indicatorClassName={indicatorClassName}
                             index={index}
+                            resId={resId}
                         />
                     )
                 })}

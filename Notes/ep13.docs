@@ -1,0 +1,16 @@
+Types of testing 
+    1. Unit testing
+    2. Integration testing
+    3. End to end testing
+
+Setting up testing tool
+    1. Install testing library
+    2. Install jest
+    3. Install Babel dependencies
+    4. Configure Babel
+    5. Configure Parcel config file to disable default babel transpiler
+    6. jest - npx jest --init
+    7. Install jsdom library
+    8. Install @babel/preset-react - to make work JSX in test cases
+    9. Include in our babelConfig
+    10. Install @testing-library/jest-dom
